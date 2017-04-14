@@ -1,0 +1,16 @@
+body { 
+    padding-top: 50px; 
+}
+
+.extra-space-top {
+    padding-top: 30px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
+
+btn-margin {
+    margin-left: 0px;
+}
