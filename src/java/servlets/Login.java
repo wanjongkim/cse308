@@ -6,6 +6,7 @@
 package servlets;
 
 import beans.AccountDAO;
+import beans.UserSessionBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -13,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,9 +32,13 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
         boolean logInSuccessful = acc.validateAccountInformation(username, password);
         if(logInSuccessful) {
-            //just return to homepage for now
-            //HttpSession s = request.getSession();
-            //s.getAttribute();
+            HttpSession sess = request.getSession();
+            UserSessionBean user = (UserSessionBean) sess.getAttribute("user");
+            if(user == null) {
+                user = new UserSessionBean();
+                sess.setAttribute("user", user);
+            }
+            user.setLoggedIn(true);
             response.sendRedirect(homepage);
         }
         else {

@@ -5,11 +5,12 @@
  */
 package beans;
 
+import java.io.Serializable;
 /**
  *
  * @author Shawn
  */
-public class UserSession {
+public class UserSessionBean implements Serializable {
     private boolean loggedIn;
 
     /**

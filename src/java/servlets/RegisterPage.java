@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import beans.UserSession;
+import beans.UserSessionBean;
 import entities.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +27,7 @@ public class RegisterPage extends HttpServlet {
         String homepage = "index";
         String registerPageURL = "JSP/register.jsp";
         HttpSession session = request.getSession();
-        UserSession user = (UserSession) session.getAttribute("user");
+        UserSessionBean user = (UserSessionBean) session.getAttribute("user");
         if(user == null || !user.isLoggedIn()) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(registerPageURL);
             dispatcher.forward(request, response); 

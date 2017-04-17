@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <jsp:useBean id="user" class="beans.UserSession" scope="session" />
+        <jsp:useBean id="user" class="beans.UserSessionBean" scope="session" />
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,6 +37,9 @@
                         <li>
                         <c:if test="${!user.loggedIn}">
                             <a href="signin">Sign In</a>
+                        </c:if>
+                        <c:if test="${user.loggedIn}">
+                            <!--Place username here!-->
                         </c:if>
                         <c:if test="${user.loggedIn}">
                             <a href="signout">Sign Out</a>

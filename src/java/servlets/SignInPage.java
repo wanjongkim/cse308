@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import beans.UserSession;
+import beans.UserSessionBean;
 import entities.Account;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -26,7 +26,7 @@ public class SignInPage extends HttpServlet {
         String signInPage = "JSP/signin.jsp";
         String homepage = "index";
         HttpSession session = request.getSession();
-        UserSession user = (UserSession) session.getAttribute("user");
+        UserSessionBean user = (UserSessionBean) session.getAttribute("user");
         if (user == null || !user.isLoggedIn()) {
             RequestDispatcher dispatcher = request.getRequestDispatcher(signInPage);
             dispatcher.forward(request, response);
